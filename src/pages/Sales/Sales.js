@@ -1,0 +1,84 @@
+import Navbar from "../../components/Navbar/Navbar";
+import styles from "./Sales.module.css";
+import React from "react";
+import ListSales from "../../components/ListSales/ListSales.js";
+import PaymentReceipt from "../../components/PaymentReceipt/PaymentReceipt.js";
+import useListSales from "../../hooks/useListSales.js";
+
+const Sales = () => {
+  const {
+    selectSales,
+    setSelcetSales,
+    openModal,
+    setOpenModal,
+    sales,
+    items,
+    loading,
+    windowWidth,
+  } = useListSales();
+
+  if (loading) {
+    return <div>Loading....</div>;
+  }
+
+  return (
+    <div className={styles.container}>
+      {windowWidth <= 480 ? (
+        <PaymentReceipt
+          open={openModal}
+          onClose={() => {
+            setOpenModal(true);
+          }}
+          selectSales={selectSales}
+          setOpenModal={setOpenModal}
+          items={items}
+        />
+      ) : (
+        ""
+      )}
+      <Navbar />
+      <div className={styles.infoRectangle}>
+        <table className={styles.userInfo}>
+          <thead>
+            <tr>
+              <th>ID.VENDAS</th>
+              <th>NOME</th>
+              <th>CPF</th>
+              <th className={styles.noShow}>E-MAIL</th>
+              <th className={styles.noShow}>QTD.ITENS</th>
+              <th className={styles.noShow}>VALOR</th>
+              <th className={styles.noShow}>TROCO</th>
+              <th>COMPROVANTE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sales.map((sales, index) => (
+              <ListSales
+                key={index}
+                sales={sales}
+                setOpenModal={setOpenModal}
+                setSelectSales={setSelcetSales}
+                items={items}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {windowWidth > 480 ? (
+        <PaymentReceipt
+          open={openModal}
+          onClose={() => {
+            setOpenModal(true);
+          }}
+          selectSales={selectSales}
+          setOpenModal={setOpenModal}
+          items={items}
+        />
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+
+export default Sales;
