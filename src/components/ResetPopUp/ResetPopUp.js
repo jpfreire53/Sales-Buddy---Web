@@ -21,7 +21,7 @@ const ResetPopUp = ({
       const encodedPassword = btoa(newPassword);
 
       const response = await fetch(
-        `http://localhost:3000/resetpassword/${userId}`,
+        `http://192.168.124.35:3000/resetpassword/${userId}`,
         {
           method: "PUT",
           credentials: "include",

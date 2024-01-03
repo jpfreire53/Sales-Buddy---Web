@@ -10,7 +10,7 @@ const useListSales = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/home/sales", {
+        const response = await fetch("http://192.168.124.35:3000/home/sales", {
           method: "GET",
           credentials: "include",
           headers: {

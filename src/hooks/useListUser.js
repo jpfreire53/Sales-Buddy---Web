@@ -11,7 +11,7 @@ const useListUser = () => {
   useEffect(() => {
     const listarUsuarios = async () => {
       try {
-        const response = await fetch("http://localhost:3000/home/user", {
+        const response = await fetch("http://192.168.124.35:3000/home/user", {
           method: "GET",
           credentials: "include",
           headers: {

@@ -14,7 +14,7 @@ const DeletePopUp = ({ open, onClose, selectUser, setOpenModal }) => {
       const userIds = selectUser.map((user) => user.id);
 
       const response = await fetch(
-        "http://localhost:3000/deleteuser",
+        "http://192.168.124.35:3000/deleteuser",
 
         {
           method: "DELETE",

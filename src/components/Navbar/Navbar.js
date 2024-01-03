@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:3000/logout", {
+      const response = await fetch("http://192.168.124.35:3000/logout", {
         method: "POST",
         credentials: "include",
         headers: {

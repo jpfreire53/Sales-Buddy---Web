@@ -28,7 +28,7 @@ const useEditUser = (id) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/user/${id}`, {
+        const response = await fetch(`http://192.168.124.35:3000/user/${id}`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -51,14 +51,17 @@ const useEditUser = (id) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:3000/edituser/${id}`, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await fetch(
+        `http://192.168.124.35:3000/edituser/${id}`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
 
       if (
         userData.user === null ||
