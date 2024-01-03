@@ -1,11 +1,9 @@
-// useSales.js
 import { useState, useEffect } from "react";
 
 const useListSales = () => {
-  const [selectSales, setSelcetSales] = useState([]);
+  const [selectSales, setSelectSales] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [sales, setSales] = useState([]);
-  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -26,7 +24,6 @@ const useListSales = () => {
 
         const data = await response.json();
         setSales(data.sales);
-        setItems(data.items);
         setLoading(false);
       } catch (error) {
         console.error("Erro ao listar a(s) venda(s): " + error.message);
@@ -49,11 +46,10 @@ const useListSales = () => {
 
   return {
     selectSales,
-    setSelcetSales,
+    setSelectSales,
     openModal,
     setOpenModal,
     sales,
-    items,
     loading,
     windowWidth,
   };

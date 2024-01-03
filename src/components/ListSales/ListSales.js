@@ -1,12 +1,7 @@
 import styles from "./ListSales.module.css";
 import receipt from "../../assets/icons/receipt_black_24dp.svg";
 
-export default function ListSales({
-  sales,
-  setSelectSales,
-  setOpenModal,
-  items,
-}) {
+export default function ListSales({ sales, setSelectSales, setOpenModal }) {
   const formatCurrency = (value) => {
     return (value / 100).toLocaleString("pt-BR", {
       style: "currency",
@@ -15,16 +10,18 @@ export default function ListSales({
   };
   return (
     <tr key={sales.id} className={styles.containerUserInfo}>
-      <td className={styles.id}>{sales.id}</td>
-      <td className={styles.name}>{sales.name}</td>
-      <td className={styles.cpf}>{sales.cpf}</td>
-      <td className={styles.email}>{sales.email}</td>
+      <td className={styles.id}>{sales.sale.id}</td>
+      <td className={styles.name}>{sales.sale.name}</td>
+      <td className={styles.cpf}>{sales.sale.cpf}</td>
+      <td className={styles.email}>{sales.sale.email}</td>
       <td className={styles.qtdItens}>
-        {items.length >= 10 ? items.length : "0" + items.length}
+        {sales.items.length >= 10
+          ? sales.items.length
+          : "0" + sales.items.length}
       </td>
-      <td className={styles.value}>{formatCurrency(sales.value)}</td>
+      <td className={styles.value}>{formatCurrency(sales.sale.value)}</td>
       <td className={styles.moneyChange}>
-        {formatCurrency(sales.moneyChange)}
+        {formatCurrency(sales.sale.moneyChange)}
       </td>
       <td className={styles.receipt}>
         <button

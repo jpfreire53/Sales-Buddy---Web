@@ -8,11 +8,10 @@ import useListSales from "../../hooks/useListSales.js";
 const Sales = () => {
   const {
     selectSales,
-    setSelcetSales,
+    setSelectSales,
     openModal,
     setOpenModal,
     sales,
-    items,
     loading,
     windowWidth,
   } = useListSales();
@@ -31,7 +30,6 @@ const Sales = () => {
           }}
           selectSales={selectSales}
           setOpenModal={setOpenModal}
-          items={items}
         />
       ) : (
         ""
@@ -57,8 +55,7 @@ const Sales = () => {
                 key={index}
                 sales={sales}
                 setOpenModal={setOpenModal}
-                setSelectSales={setSelcetSales}
-                items={items}
+                setSelectSales={setSelectSales}
               />
             ))}
           </tbody>
@@ -72,7 +69,6 @@ const Sales = () => {
           }}
           selectSales={selectSales}
           setOpenModal={setOpenModal}
-          items={items}
         />
       ) : (
         ""

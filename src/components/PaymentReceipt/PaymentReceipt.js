@@ -1,13 +1,7 @@
 import styles from "./PaymentReceipt.module.css";
 import jsPDF from "jspdf";
 
-const PaymentReceipt = ({
-  open,
-  onClose,
-  selectSales,
-  setOpenModal,
-  items,
-}) => {
+const PaymentReceipt = ({ open, onClose, selectSales, setOpenModal }) => {
   const handleDownload = () => {
     const pdf = new jsPDF();
 
@@ -16,11 +10,20 @@ const PaymentReceipt = ({
       pdf.text(20, 30, `CPF: ${selectSales.cpf}`);
       pdf.text(20, 40, `E-mail: ${selectSales.email}`);
 
-      pdf.text(20, 80, `Valor Recebido: ${selectSales.value}`);
-      pdf.text(20, 90, `Valor Venda: ${selectSales.value}`);
-      pdf.text(20, 100, `Troco Devido: ${selectSales.moneyChange}`);
+      pdf.text(
+        20,
+        80,
+        `Valor Recebido: ${formatCurrency(
+          selectSales.value + selectSales.moneyChange
+        )}`
+      );
+      pdf.text(20, 90, `Valor Venda: ${formatCurrency(selectSales.value)}`);
+      pdf.text(
+        20,
+        100,
+        `Troco Devido: ${formatCurrency(selectSales.moneyChange)}`
+      );
     }
-
     pdf.save("comprovante.pdf");
   };
   const closePopUp = () => {
@@ -51,30 +54,29 @@ const PaymentReceipt = ({
               <div className={styles.contentDetails}>
                 <div className={styles.divName}>
                   <label className={styles.lblName}>Nome</label>
-                  <p>{selectSales.name}</p>
+                  <p>{selectSales.sale.name}</p>
                 </div>
-
                 <div className={styles.divCpf}>
                   <label className={styles.lblCpf}>CPF</label>
-                  <p>{selectSales.cpf}</p>
+                  <p>{selectSales.sale.cpf}</p>
                 </div>
               </div>
               <div className={styles.divEmail}>
                 <label className={styles.email}>E-mail</label>
-                <p>{selectSales.email}</p>
+                <p>{selectSales.sale.email}</p>
               </div>
               <div className={styles.minhaLinha}></div>
               <div className={styles.contenItems}>
                 <div className={styles.contentDetailsItems}>
                   <div className={styles.containerItemsId}>
                     <label className={styles.lblItem}>Itm</label>
-                    {items.map((item) => (
-                      <p>{item.id}1</p>
+                    {selectSales.items.map((item) => (
+                      <p>{item.id}</p>
                     ))}
                   </div>
                   <div className={styles.containerDescription}>
                     <label className={styles.lblDescription}>Descrição</label>
-                    {items.map((item) => (
+                    {selectSales.items.map((item) => (
                       <p>{item.description}</p>
                     ))}
                   </div>
@@ -86,17 +88,17 @@ const PaymentReceipt = ({
                   <p>Valor recebido</p>
                   <p>
                     {formatCurrency(
-                      selectSales.value + selectSales.moneyChange
+                      selectSales.sale.value + selectSales.sale.moneyChange
                     )}
                   </p>
                 </div>
                 <div className={styles.value}>
                   <p>Valor venda</p>
-                  <p>{formatCurrency(selectSales.value)}</p>
+                  <p>{formatCurrency(selectSales.sale.value)}</p>
                 </div>
-                <div className={formatCurrency(styles.moneyChange)}>
+                <div className={styles.moneyChange}>
                   <p>Troco devido</p>
-                  <p>{formatCurrency(selectSales.moneyChange)}</p>
+                  <p>{formatCurrency(selectSales.sale.moneyChange)}</p>
                 </div>
               </div>
             </div>

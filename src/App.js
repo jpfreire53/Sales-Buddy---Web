@@ -1,15 +1,12 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route /*Navigate*/ } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-//import { useState } from "react";
 import Home from "./pages/Home/Home";
 import EditUser from "./pages/EditUser/EditUser";
 import Sales from "./pages/Sales/Sales";
 
 function App() {
-  //const [user, setUser] = useState(undefined);
-
   return (
     <div className="App">
       <BrowserRouter>
