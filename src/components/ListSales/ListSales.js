@@ -8,8 +8,9 @@ export default function ListSales({ sales, setSelectSales, setOpenModal }) {
       currency: "BRL",
     });
   };
+
   return (
-    <tr key={sales.id} className={styles.containerUserInfo}>
+    <tr key={sales.sale.id} className={styles.containerUserInfo}>
       <td className={styles.id}>{sales.sale.id}</td>
       <td className={styles.name}>{sales.sale.name}</td>
       <td className={styles.cpf}>{sales.sale.cpf}</td>

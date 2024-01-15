@@ -52,7 +52,7 @@ const Home = () => {
               <th>CNPJ</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={styles.containerList}>
             {users.map((user, index) => (
               <ListUser
                 key={index}

@@ -6,22 +6,26 @@ const PaymentReceipt = ({ open, onClose, selectSales, setOpenModal }) => {
     const pdf = new jsPDF();
 
     if (selectSales) {
-      pdf.text(20, 20, `Nome: ${selectSales.name}`);
-      pdf.text(20, 30, `CPF: ${selectSales.cpf}`);
-      pdf.text(20, 40, `E-mail: ${selectSales.email}`);
+      pdf.text(20, 20, `Nome: ${selectSales.sale.name}`);
+      pdf.text(20, 30, `CPF: ${selectSales.sale.cpf}`);
+      pdf.text(20, 40, `E-mail: ${selectSales.sale.email}`);
 
       pdf.text(
         20,
         80,
         `Valor Recebido: ${formatCurrency(
-          selectSales.value + selectSales.moneyChange
+          selectSales.sale.value + selectSales.sale.moneyChange
         )}`
       );
-      pdf.text(20, 90, `Valor Venda: ${formatCurrency(selectSales.value)}`);
+      pdf.text(
+        20,
+        90,
+        `Valor Venda: ${formatCurrency(selectSales.sale.value)}`
+      );
       pdf.text(
         20,
         100,
-        `Troco Devido: ${formatCurrency(selectSales.moneyChange)}`
+        `Troco Devido: ${formatCurrency(selectSales.sale.moneyChange)}`
       );
     }
     pdf.save("comprovante.pdf");
@@ -31,7 +35,6 @@ const PaymentReceipt = ({ open, onClose, selectSales, setOpenModal }) => {
   };
 
   if (!open) return null;
-  console.log(selectSales);
 
   const formatCurrency = (value) => {
     return (value / 100).toLocaleString("pt-BR", {
@@ -70,8 +73,8 @@ const PaymentReceipt = ({ open, onClose, selectSales, setOpenModal }) => {
                 <div className={styles.contentDetailsItems}>
                   <div className={styles.containerItemsId}>
                     <label className={styles.lblItem}>Itm</label>
-                    {selectSales.items.map((item) => (
-                      <p>{item.id}</p>
+                    {selectSales.items.map((item, index) => (
+                      <p>{index + 1}</p>
                     ))}
                   </div>
                   <div className={styles.containerDescription}>

@@ -16,6 +16,8 @@ const Sales = () => {
     windowWidth,
   } = useListSales();
 
+  console.log(sales);
+
   if (loading) {
     return <div>Loading....</div>;
   }
@@ -49,11 +51,11 @@ const Sales = () => {
               <th>COMPROVANTE</th>
             </tr>
           </thead>
-          <tbody>
-            {sales.map((sales, index) => (
+          <tbody className={styles.containerList}>
+            {sales.map((sale, index) => (
               <ListSales
                 key={index}
-                sales={sales}
+                sales={sale}
                 setOpenModal={setOpenModal}
                 setSelectSales={setSelectSales}
               />

@@ -23,6 +23,7 @@ const Login = () => {
           type="text"
           placeholder="Usuário"
           value={user}
+          maxLength={30}
           onChange={(e) => setUser(e.target.value)}
         />
         <input
@@ -30,6 +31,7 @@ const Login = () => {
           type="password"
           placeholder="Senha"
           value={password}
+          maxLength={20}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className={styles.btnLogin} onClick={handleSubmit}>

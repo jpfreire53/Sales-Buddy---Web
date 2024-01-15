@@ -8,7 +8,6 @@ export default function ListUser({ user, setSelectUser, selectUser }) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleChecked(e, setIsChecked, user) {
-    console.log(e.target.checked);
     const isChecked = e.target.checked;
 
     if (isChecked) {
@@ -22,10 +21,7 @@ export default function ListUser({ user, setSelectUser, selectUser }) {
     setIsChecked(isChecked);
   }
 
-  useEffect(() => {
-    console.log(user);
-    console.log("Usuário adicionado: " + selectUser);
-  }, [selectUser]);
+  useEffect(() => {}, [selectUser]);
 
   return (
     <tr key={user.id} className={styles.containerUserInfo}>

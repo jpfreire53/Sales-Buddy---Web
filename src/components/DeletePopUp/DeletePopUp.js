@@ -14,7 +14,7 @@ const DeletePopUp = ({ open, onClose, selectUser, setOpenModal }) => {
       const userIds = selectUser.map((user) => user.id);
 
       const response = await fetch(
-        "http://192.168.124.35:3000/deleteuser",
+        "http://localhost:3000/deleteuser",
 
         {
           method: "DELETE",
@@ -27,8 +27,6 @@ const DeletePopUp = ({ open, onClose, selectUser, setOpenModal }) => {
           }),
         }
       );
-
-      console.log(response);
 
       if (!response.ok) {
         toast.error("Não foi possível deletar o(s) usuário(s)");

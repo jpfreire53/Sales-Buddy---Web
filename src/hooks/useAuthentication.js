@@ -10,7 +10,7 @@ const useAuthentication = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://192.168.124.35:3000/login", {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         credentials: "include",
         headers: {
